@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <title>Detail</title>
+</head>
+
+<body>
+    <header>
+        <p>You are logged in as <span id="username"></span></p>
+        <button class="change-username" id="change-username">Change Username</button>
+
+        <nav>
+            <a class="go-back" href="/"><strong>&#8656;</strong> Home</a>
+        </nav>
+    </header>
+    <main class="flex">
+        <img alt="{{movie.Title}} - poster" src="{{movie.Poster}}">
+        <div class="movie-info-detail">
+            <h1>{{movie.Title}}</h1>
+            <p><strong>Genre: </strong>{{movie.Genre}}</p>
+            <p><strong>Runtime: </strong>{{movie.Runtime}}</p>
+            <p><strong>Director: </strong>{{movie.Director}}</p>
+            <p><strong>Language: </strong>{{movie.Language}}</p>
+            <p><strong>Release date: </strong>{{movie.Released}}</p>
+            <p><strong>Writer: </strong>{{movie.Writer}}</p>
+            <p><strong>iMDB rating: </strong>{{movie.imdbRating}}</p>
+            <p><strong>Plot: </strong>{{movie.Plot}}</p>
+        </div>
+    </main>
+    <section class="comment-form">
+        <h2>What do you think about this movie?</h2>
+        <form action="/add-comment" method="POST">
+            <p><label for="comment">Your comment:</label></p>
+            </p><textarea name="comment" placeholder="write your comment here"></textarea></p>
+            <input class="form-username" type="text" hidden name="username">
+            <input type="text" hidden name="id" value="{{movie.imdbID}}">
+            </p><input type="submit" name="submit" value="Submit"></p>
+        </form>
+    </section>
+    <section class="comments">
+        <h2>People said...</h2>
+        {% if comments|length > 0 %}
+            {% for comment in comments %}
+                <div class="single-comment">
+                    <p>{{comment.content}} </p>
+                    <p class="comment-username">{{comment.username}} | on {{comment.date|truncate(16, True, '') }}</p>
+                      <button data-id="{{comment.id}}" class="reply-button">reply</button>
+                </div>
+                <!-- I pass movie id for the redirection purposes-->
+
+                <form id="{{comment.id}}" action="/add-answer/{{movie.imdbID}}" method="POST">
+                    <p><label for="answer">Your answer:</label></p>
+                    </p><textarea name="answer" placeholder="write your answer here"></textarea></p>
+                    <input class="answer-username" type="text" hidden name="username">
+                    <input type="text" hidden name="id" value="{{comment.id}}">
+                    </p><input type="submit" name="submit" value="Submit"></p>
+                </form>
+                {% for answer in answers %}
+                    {% if answer.comment|string == comment.id|string %}
+                        <div class="single-answer">
+                            <p>{{answer.content}}</p>
+                            <p class="comment-username">{{answer.username}} | on {{comment.date|truncate(16, True, '') }}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        {% else %}
+            <h2>...nothing about this movie yet. Be the first one!</h2>
+        {% endif %}
+    </section>
+    <script src="/static/scripts.js"></script>
+</body>
+
+</html>

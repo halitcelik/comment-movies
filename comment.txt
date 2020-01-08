@@ -1,0 +1,34 @@
+[
+    {
+        "content": "I really liked the last one. Fabulous!",
+        "date": "2019-12-02 17:16:02.896680",
+        "id": 7308784312042434303,
+        "movie": "tt3011894",
+        "py/object": "app.Comment",
+        "username": "Vicky"
+    },
+    {
+        "content": "Here is another comment",
+        "date": "2019-12-02 17:35:04.027477",
+        "id": 57857913323676250317,
+        "movie": "tt3011894",
+        "py/object": "app.Comment",
+        "username": "Cristina"
+    },
+    {
+        "content": "First comment",
+        "date": "2019-12-02 18:19:15.450982",
+        "id": 23964805713898515965,
+        "movie": "tt2991224",
+        "py/object": "app.Comment",
+        "username": "Halit"
+    },
+    {
+        "content": "Writing as halit",
+        "date": "2019-12-03 12:47:39.694079",
+        "id": 23935848174365539912,
+        "movie": "tt3011894",
+        "py/object": "app.Comment",
+        "username": "halit"
+    }
+]

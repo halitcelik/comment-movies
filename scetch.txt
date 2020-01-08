@@ -1,0 +1,25 @@
+=> IDEA: CREATE AN APP WHERE PEOPLE CAN VOTE OR COMMENT FOR 10 CANNES FINALIST MOVIES
+
+=> git init
+=> initial commit push
+=> create virtualenv
+=> install flask & dependencies
+=> write requirements file
+=> search for flask folder structure
+=> create folder structure
+=> create files
+=> write scetch
+=> Get app running
+=> Create images folder and add images
+=> get data as json from omdb
+=> get Comment model ready
+=> template structure and detail page with id
+=> add ability to store comments as json
+=> add ability to display comments from txt
+=> comment form
+=> ability to write comments from frontend
+=> ability to add username to the comment
+=> add date to the comment
+=> prevent script tag and empty comments
+=> display messages for bad formatted comments
+=> add some styling

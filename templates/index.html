@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fake Cannes</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+
+<body>
+    <h1>Welcome to Fake Cannes, <span id="username"></span></h1>
+    <button class="change-username" id="change-username">Change Username</button>
+    {% if message %}
+        <h1>{{message|safe}}</h1>
+    {% endif %}
+    <main>
+        {% for movie in movies %}
+        <div class='single-movie flex'>
+            <a href="detail/{{movie.imdbID}}">
+                <img alt="{{movie.Title}} - poster" src="{{movie.Poster}}">
+            </a>
+            <div class="movie-info-detail">
+                <h1>{{movie.Title}}</h1>
+                <p><strong>Genre: </strong>{{movie.Genre}}</p>
+                <p><strong>Runtime: </strong>{{movie.Runtime}}</p>
+                <p><strong>Director: </strong>{{movie.Director}}</p>
+                <p><strong>Language: </strong>{{movie.Language}}</p>
+                <p><strong>Release date: </strong>{{movie.Released}}</p>
+                <p><strong>Writer: </strong>{{movie.Writer}}</p>
+                <p><strong>iMDB rating: </strong>{{movie.imdbRating}}</p>
+                <p><strong>Plot: </strong>{{movie.Plot}}</p>
+                <!-- if statement is to check for plural singular -->
+                <a href="detail/{{movie.imdbID}}">See & write comments (
+                    {% if movie.comment_count == 1 %}{{movie.comment_count}} comment)
+                    {% else %}
+                    {{movie.comment_count}} comments)
+                {% endif %}</a>
+            </div>
+        </div>
+        {% endfor %}
+    </main>
+    <div class="username-dialog" id="username-dialog">
+        <form action="." id="username-form" method="post">
+            <label>Please enter your username:</label>
+            <!-- Autofocus is not working on firefox for a flash, it focuses and unfocuses again. Chrome ok.-->
+            <input class="username" autofocus type="text" name="username">
+            <input id="submit-username" type="submit" name="submit" value="Submit">
+        </form>
+    </div>
+    <script src="/static/scripts.js"></script>
+</body>
+
+</html>
