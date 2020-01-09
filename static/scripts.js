@@ -1,8 +1,12 @@
+/*MARTA LOOK HERE This line gets the username from localstorage when the page is loaded first.
+If the username is already in the local storage.*/ 
 const name = localStorage.getItem('username');
 
 const dialog = document.getElementById('username-dialog');
 //If the user has his/her name in the storage, let them see the page. Otherwise show the form.
 // I display a layer on top of the content if the username does not exist.
+//So if the username is not in the localStorage already, the user, when they first come to the page they only see a form asking
+//him or her to enter a username.
 if (name) {
     document.getElementById('username').textContent = name
     if (dialog) {
@@ -20,10 +24,16 @@ if (name) {
 }
 
 // used classname not to get "null" error in the homepage. Easier to check for the length of it.
-//If the user is in detail page, fill in the username in the form, on page load.
+//MARTA LOOK HERE Detail page is the place where they write comments. 
+// If the user is in detail page, fill in the username in the form, on page load.( When the page is visited.)
+// 
 const formUsername = document.querySelector('.form-username');
 if (formUsername) {
     console.log('writing formusername')
+    //MARTA LOOK HERE - This is the point where I say find that hidden input, 
+    // and put the username from localStorage as its value.
+    //As this is done on page load, whenever user submits a form, the form sends the username (prefilled by this code)
+    //to the back end together with the fields that the user typed in. (comment or blogpost)
     formUsername.value = name;
 }
 
