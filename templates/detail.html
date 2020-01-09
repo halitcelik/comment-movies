@@ -35,6 +35,8 @@
         <form action="/add-comment" method="POST">
             <p><label for="comment">Your comment:</label></p>
             </p><textarea name="comment" placeholder="write your comment here"></textarea></p>
+    <!--MARTA LOOK HERE this hidden input below is the input that is submitted with the form and it contains the username
+as its value. The value is inserted by javascript in static/script.js file. Take a look at that.-->
             <input class="form-username" type="text" hidden name="username">
             <input type="text" hidden name="id" value="{{movie.imdbID}}">
             </p><input type="submit" name="submit" value="Submit"></p>
