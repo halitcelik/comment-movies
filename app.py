@@ -134,6 +134,7 @@ def add_answer(id):
 @app.route('/add-comment', methods=['POST'])
 def add_comment():
     if request.method == 'POST':
+        #MARTA LOOK HERE - I get the username from the form that the user submitted. and store it in a python variable.
         username = request.form.get('username')
         comment = request.form.get('comment').strip()
         print(username)
@@ -146,6 +147,9 @@ def add_comment():
                     message='Script tag is not allowed in comment.<a href="/">Go back to Homepage</a>',
                 )
             comment_movie = request.form.get('id')
+            #MARTA LOOK HERE - This is the point where I create a comment using Comment class.
+            # Comment class has a field for username. And that username is going to be the username taken from the form.
+            #now if you look at comments.txt you will see the usernames are already stored there.
             user_comment = Comment(comment_movie, comment, username)
             write_comment(user_comment)
 
